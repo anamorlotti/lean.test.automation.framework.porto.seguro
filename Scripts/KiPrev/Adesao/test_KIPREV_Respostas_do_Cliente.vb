@@ -24,7 +24,7 @@ Namespace test_KIPREV_Respostas_do_Cliente
                             ''*******************************************************************************************************************************************************
                             'Seleção do tipo de Questionário
                             Select Case vQuestionario
-                                Case "DPSS"
+                            	Case "DPSS"
                                     'Test.Click("", True, typeIdentification.leanTest)
                                 Case "DPSC"
                                     Test.Click("38,248,53,26;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180306163409.bmp", True, typeIdentification.leanTest) 'select Questionario
