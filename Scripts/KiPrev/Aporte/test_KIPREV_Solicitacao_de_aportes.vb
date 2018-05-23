@@ -1,0 +1,136 @@
+﻿'*********************************************************************************************************************************
+'Create by LeanTest Automation 3.6 in 09/03/2018 11:13:42 (By LeanTest Automation Test) 
+'User:............ Admin
+'Domain:.......... LeanTest Execution Automation to Client Server (Desktop)
+'Environment:..... Automation Project
+'Application...... KIPREV
+'Functionality:... Solicitacao de aportes
+'Master Test:..... No Defined
+'TableTest:....... test_KIPREV_Solicitacao_de_aportes
+'*********************************************************************************************************************************
+Imports Lean.Test.Automation.Framework.LibraryGlobal.LibGlobal
+Namespace test_KIPREV_Solicitacao_de_aportes
+    Public Class test_KIPREV_Solicitacao_de_aportes
+        Public Sub New()
+        End Sub
+        Public Function Run() As Boolean
+            Try
+                If StartTest() Then
+                    Do While p_CountTest <> 0
+                        Try
+                            Test.TestLog("Informar valores", "Sistema deve solicitar os valores conforme critérios de entrada", "Sistema permitiu a inclusão de valores com sucesso", typelog.Passed)
+							Test.Set("22,242,139,21;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309105435.bmp", vCertificado,"", typeIdentification.leantest) 'type Certificado
+							Test.Set("412,235,150,41;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309105613.bmp", vValor,"", typeIdentification.leantest) 'type Valor
+							Test.Set("473,317,50,68;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309105709.bmp", vFundo,"", typeIdentification.leantest) 'type Fundo
+							Test.Set("621,320,81,67;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309105812.bmp", vValor_3,"", typeIdentification.leantest) 'type Valor
+							Test.Set("696,319,57,62;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309110040.bmp", vAporte,"", typeIdentification.leantest) 'type Aporte
+							If CBool(vbtnValidacao) Then
+								Test.TestLog("Clicar em Validação", "Clicar em Validação e verificar o resultado esperado", "Clique em Validação com sucesso", typelog.Passed)
+								Test.Click("27,449,100,18;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309110232.bmp", vbtnValidacao, typeIdentification.leantest) 'click Validação
+								Test.TestLog("Resultado após clique em Validação", "Resultado após clique em Validação", "Resultado verificado com sucesso", typelog.Passed)
+							End If
+							If CBool(vbtnSim) Then
+								Test.TestLog("Clicar em Sim", "Clicar em Sim e verificar o resultado esperado", "Clique em Sim com sucesso", typelog.Passed)
+								Test.Click("620,511,67,19;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309110327.bmp", vbtnSim, typeIdentification.leantest) 'click Sim
+								Test.TestLog("Resultado após clique em Sim", "Resultado após clique em Sim", "Resultado verificado com sucesso", typelog.Passed)
+							End If
+							If CBool(vbtnRegistro) Then
+								Test.TestLog("Clicar em Registro", "Clicar em Registro e verificar o resultado esperado", "Clique em Registro com sucesso", typelog.Passed)
+								Test.Click("152,446,97,21;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309110433.bmp", vbtnRegistro, typeIdentification.leantest) 'click Registro
+								Test.TestLog("Resultado após clique em Registro", "Resultado após clique em Registro", "Resultado verificado com sucesso", typelog.Passed)
+							End If
+							If CBool(vbtnOk) Then
+								Test.TestLog("Clicar em Ok", "Clicar em Ok e verificar o resultado esperado", "Clique em Ok com sucesso", typelog.Passed)
+								Test.Click("621,512,66,17;C:\LeanTestAutomation\Scripts\lean.test.automation.framework.porto.seguro\imgCaptured\img_20180309110532.bmp", vbtnOk, typeIdentification.leantest) 'click Ok
+								Test.TestLog("Resultado após clique em Ok", "Resultado após clique em Ok", "Resultado verificado com sucesso", typelog.Passed)
+							End If
+							
+                            'Checkpoint
+                            Test.CheckPointTest(p_CheckPoint1, p_ExpectedResult)
+                            'end test                         
+                            Test.EndTest(p_GenerateLogTest)
+                            If p_IsLoop Then StartTest() Else p_CountTest = 0
+                        Catch ex As Exception
+							p_errorDescription = "Menssage error: " & ex.Message.ToString
+							Test.TestLog("Passo executado", "Execução do passo com sucesso", "Passo executado com falha! Message: " & p_errorDescription, typelog.Failed)
+							EndTestTable()
+                       Test.EndTest(p_GenerateLogTest)
+                            If p_IsLoop Then StartTest() Else p_CountTest = 0
+                        End Try
+                    Loop
+                    EndTestTable()
+                    Return True
+                Else
+                    Test.TestLog("Teste executado", "Teste executado com sucesso", "Teste executado com falha! StartTest = False", typelog.Failed)
+                    EndTestTable()
+                    Return False
+                End If
+            Catch ex As Exception
+                p_errorDescription = "Menssage error: " & ex.Message.ToString
+				HandlerError("test_KIPREV_Solicitacao_de_aportes.test_KIPREV_Solicitacao_de_aportes.Run: " & ex.Message)
+                Test.TestLog("Execução do teste", "Teste executado com sucesso", "Teste executado com falha! Message: " & p_errorDescription, typelog.Failed)
+                Return False
+            End Try
+        End Function
+
+        '*********************************************************************************************************************************
+        'STARTTEST
+        Public Shared p_ExpectedResult, p_CheckPoint1 As String
+        Public Shared vCertificado, vValor, vFundo, vValor_3, vAporte, vbtnValidacao,vbtnSim,vbtnRegistro,vbtnOk As String
+
+        Private Function StartTest() As Boolean
+            Dim strQueryOut1, strQueryOut2, strQueryOut3, strQueryOut4, strQueryOut5, strQueryOut6 as string
+            Try
+                p_CountTest = pc_db.OpenTestTable(p_TableTest, p_IDScenario) 'opening the test table containing all the test cases
+                If p_CountTest <> 0 Then
+                    p_IDScenario = pc_db.Fieldt("IDScenario") 'set IDSceario
+                    p_IDTest = pc_db.Fieldt("IDTest") 'set IDTest
+                    p_OrdemTest = pc_db.Fieldt("Ordem")
+                    p_TestName = pc_db.Fieldt("TestName")
+                    p_DescriptionTest = pc_db.Fieldt("Description")
+                    p_IDRun = pc_db.Fieldt("IDRun")
+                    p_ExpectedResult = pc_db.Fieldt("ExpectedResult")
+                    p_IDTestInstance = pc_db.Fieldt("IDTool")
+					p_CheckPoint1 = pc_db.Fieldt("CheckPoint1")
+
+                    'Data Transfer Parameters
+                    strQueryOut1 = pc_db.Fieldt("QueryInput1")
+                    strQueryOut2 = pc_db.Fieldt("QueryInput2")
+                    strQueryOut3 = pc_db.Fieldt("QueryInput3")
+                    strQueryOut4 = pc_db.Fieldt("QueryInput4")
+					strQueryOut5 = pc_db.Fieldt("QueryInput5")
+					strQueryOut6 = pc_db.Fieldt("QueryInput6")
+                   
+                    'transfer values between tables
+					If String.IsNullOrEmpty(strQueryOut1) Then pc_db.TransferDataInTablesArray(strQueryOut1, p_TableTest, p_IDScenario, p_IDTest)
+                    If String.IsNullOrEmpty(strQueryOut2) Then pc_db.TransferDataInTablesArray(strQueryOut1, p_TableTest, p_IDScenario, p_IDTest)
+                    If String.IsNullOrEmpty(strQueryOut3) Then pc_db.TransferDataInTablesArray(strQueryOut1, p_TableTest, p_IDScenario, p_IDTest)
+                    If String.IsNullOrEmpty(strQueryOut4) Then pc_db.TransferDataInTablesArray(strQueryOut1, p_TableTest, p_IDScenario, p_IDTest)
+                    If String.IsNullOrEmpty(strQueryOut5) Then pc_db.TransferDataInTablesArray(strQueryOut1, p_TableTest, p_IDScenario, p_IDTest)
+                    If String.IsNullOrEmpty(strQueryOut6) Then pc_db.TransferDataInTablesArray(strQueryOut1, p_TableTest, p_IDScenario, p_IDTest)
+					'
+                    p_CountTest = pc_db.OpenTestTable(p_TableTest, p_IDScenario)
+                    vCertificado = pc_db.Fieldt("vCertificado")
+					vValor = pc_db.Fieldt("vValor")
+					vFundo = pc_db.Fieldt("vFundo")
+					vValor_3 = pc_db.Fieldt("vValor_3")
+					vAporte = pc_db.Fieldt("vAporte")
+					vbtnValidacao = pc_db.Fieldt("vbtnValidacao")
+					vbtnSim = pc_db.Fieldt("vbtnSim")
+					vbtnRegistro = pc_db.Fieldt("vbtnRegistro")
+					vbtnOk = pc_db.Fieldt("vbtnOk")
+					
+                    
+                    pc_db.StartExecution(p_TableTest, p_IDTest)
+                    If p_PublishQC Then CreateStructureQC()
+                    Return True
+                Else
+                    Return False
+                End If
+            Catch ex As Exception
+                HandlerError("test_KIPREV_Solicitacao_de_aportes.test_KIPREV_Solicitacao_de_aportes.StartTest" & ex.StackTrace & " - " & ex.Message)
+                Return False
+            End Try
+        End Function
+    End Class
+End Namespace
